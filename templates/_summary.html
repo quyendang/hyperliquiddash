@@ -1,0 +1,13 @@
+<h2>Account summary</h2>
+{% if not s %}
+  <div class="muted">No data yet. (chờ snapshot)</div>
+{% else %}
+  <div class="row">
+    <span class="pill">Account value: <b>{{ "%.2f"|format(s.account_value) }}</b></span>
+    <span class="pill">Margin used: <b>{{ "%.2f"|format(s.margin_used) }}</b></span>
+    <span class="pill">uPnL:
+      <b class="{{ 'pos' if s.unrealized_pnl >= 0 else 'neg' }}">{{ "%.2f"|format(s.unrealized_pnl) }}</b>
+    </span>
+    <span class="pill muted">Updated: {{ s.updated_at }}</span>
+  </div>
+{% endif %}
