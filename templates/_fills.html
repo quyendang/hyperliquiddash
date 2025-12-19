@@ -1,0 +1,22 @@
+<h2>Recent fills (50)</h2>
+{% if rows|length == 0 %}
+  <div class="muted">No fills yet.</div>
+{% else %}
+<table>
+  <thead>
+    <tr><th>Time(ms)</th><th>Coin</th><th>Side</th><th>Px</th><th>Sz</th><th>Fee</th></tr>
+  </thead>
+  <tbody>
+  {% for f in rows %}
+    <tr>
+      <td class="muted">{{ f.ts }}</td>
+      <td>{{ f.coin }}</td>
+      <td class="{{ 'pos' if f.side|lower in ['buy','b'] else 'neg' }}">{{ f.side }}</td>
+      <td>{{ "%.4f"|format(f.px) }}</td>
+      <td>{{ "%.4f"|format(f.sz) }}</td>
+      <td class="muted">{{ "%.6f"|format(f.fee) }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endif %}
