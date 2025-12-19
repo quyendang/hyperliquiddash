@@ -10,7 +10,7 @@ from hl_ws import ws_worker
 from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
-templates = Jinja2Templates(directory="app/templates")
+templates = Jinja2Templates(directory="templates")
 
 @app.on_event("startup")
 async def startup():
