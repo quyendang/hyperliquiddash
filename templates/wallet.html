@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block top_right %}
+  <span class="pill">Wallet: {{ addr }}</span>
+{% endblock %}
+
+{% block body %}
+<div class="grid grid-2">
+  <div class="card"
+       hx-get="/partials/{{ addr }}/summary"
+       hx-trigger="load, every {{ ui_poll }}s"
+       hx-swap="innerHTML">
+    <div class="muted">Loading summary…</div>
+  </div>
+
+  <div class="card"
+       hx-get="/partials/{{ addr }}/positions"
+       hx-trigger="load, every {{ ui_poll }}s"
+       hx-swap="innerHTML">
+    <div class="muted">Loading positions…</div>
+  </div>
+
+  <div class="card" style="grid-column:1/-1"
+       hx-get="/partials/{{ addr }}/fills"
+       hx-trigger="load, every {{ ui_poll }}s"
+       hx-swap="innerHTML">
+    <div class="muted">Loading fills…</div>
+  </div>
+</div>
+{% endblock %}
