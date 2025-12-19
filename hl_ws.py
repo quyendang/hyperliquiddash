@@ -1,10 +1,10 @@
 import asyncio
 import json
 import websockets
-from .hl_http import get_clearinghouse_state
-from .repo import upsert_account_summary, upsert_position, insert_fill
-from .config import REFRESH_SNAPSHOT_SECONDS
-from .db import SessionLocal
+from hl_http import get_clearinghouse_state
+from repo import upsert_account_summary, upsert_position, insert_fill
+from config import REFRESH_SNAPSHOT_SECONDS
+from db import SessionLocal
 
 HL_WS_URL = "wss://api.hyperliquid.xyz/ws"
 
