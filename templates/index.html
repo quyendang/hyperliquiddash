@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="grid grid-2">
+  <div class="card">
+    <h2>Add wallet</h2>
+    <form hx-post="/wallets/add" hx-swap="none">
+      <div class="row">
+        <input name="address" placeholder="0x..." style="flex:1;min-width:240px" required />
+        <input name="label" placeholder="label (optional)" style="flex:1;min-width:180px" />
+        <button type="submit">Add</button>
+      </div>
+      <div class="muted" style="margin-top:8px;">Trang sẽ tự cập nhật dữ liệu (snapshot + realtime).</div>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>Watchlist</h2>
+    {% if wallets|length == 0 %}
+      <div class="muted">Chưa có ví nào.</div>
+    {% else %}
+      <table>
+        <thead><tr><th>Wallet</th><th>Label</th><th></th></tr></thead>
+        <tbody>
+          {% for w in wallets %}
+          <tr>
+            <td><a href="/wallet/{{ w.address }}">{{ w.address }}</a></td>
+            <td class="muted">{{ w.label }}</td>
+            <td style="width:1%">
+              <form hx-post="/wallets/remove" hx-swap="none">
+                <input type="hidden" name="address" value="{{ w.address }}"/>
+                <button type="submit">Remove</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
