@@ -56,6 +56,9 @@ async def wallet_page(request: Request, addr: str):
         "ui_poll": UI_POLL_SECONDS,
     })
 
+@app.get("/healthz")
+async def healthz():
+    return {"ok": True}
 # ---- HTMX partials ----
 
 @app.get("/partials/{addr}/summary", response_class=HTMLResponse)
