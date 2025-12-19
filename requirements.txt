@@ -7,3 +7,4 @@ asyncpg
 httpx
 websockets
 python-dotenv
+psycopg2
