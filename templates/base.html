@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>{{ title }}</title>
+  <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+  <style>
+    :root{--bg:#0b1020;--card:#121a33;--text:#e6eaf2;--muted:#93a4c7;--border:#223057;--green:#2dd4bf;--red:#fb7185;--yellow:#fbbf24;}
+    body{margin:0;background:linear-gradient(180deg,#070a14,#0b1020 30%,#070a14);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system;}
+    .wrap{max-width:1100px;margin:0 auto;padding:24px;}
+    .top{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-bottom:18px;}
+    .card{background:rgba(18,26,51,.9);border:1px solid var(--border);border-radius:16px;padding:16px;box-shadow:0 10px 28px rgba(0,0,0,.35);}
+    .grid{display:grid;grid-template-columns:1fr;gap:12px;}
+    @media(min-width:900px){.grid-2{grid-template-columns:1fr 1fr;}}
+    h1{font-size:18px;margin:0;color:#fff;}
+    h2{font-size:14px;margin:0 0 10px;color:#fff;}
+    .muted{color:var(--muted);font-size:12px;}
+    input,button{border-radius:12px;border:1px solid var(--border);background:#0d1430;color:var(--text);padding:10px 12px;}
+    button{cursor:pointer}
+    table{width:100%;border-collapse:separate;border-spacing:0 8px;}
+    th{font-size:12px;color:var(--muted);text-align:left;font-weight:600;padding:0 10px;}
+    td{background:#0d1430;border:1px solid var(--border);padding:10px;border-left:none;border-right:none;}
+    tr td:first-child{border-left:1px solid var(--border);border-top-left-radius:12px;border-bottom-left-radius:12px;}
+    tr td:last-child{border-right:1px solid var(--border);border-top-right-radius:12px;border-bottom-right-radius:12px;}
+    .pill{display:inline-flex;gap:6px;align-items:center;border:1px solid var(--border);padding:4px 10px;border-radius:999px;font-size:12px;background:#0d1430;}
+    .pos{color:var(--green)} .neg{color:var(--red)}
+    a{color:#c7d2fe;text-decoration:none}
+    a:hover{text-decoration:underline}
+    .row{display:flex;gap:10px;flex-wrap:wrap}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <h1>{{ title }}</h1>
+        <div class="muted">Perp wallet tracker (Hyperliquid) • HTMX • Postgres</div>
+      </div>
+      <div class="row">
+        <a class="pill" href="/">Dashboard</a>
+        {% block top_right %}{% endblock %}
+      </div>
+    </div>
+    {% block body %}{% endblock %}
+  </div>
+</body>
+</html>
