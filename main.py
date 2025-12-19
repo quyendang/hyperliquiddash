@@ -2,11 +2,11 @@ import asyncio
 from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse
 from sqlalchemy import select, desc
-from .config import APP_TITLE, UI_POLL_SECONDS
-from .db import engine, SessionLocal
-from .models import Base, Wallet, Position, Fill, AccountSummary
-from .repo import list_active_wallets, upsert_wallet, deactivate_wallet
-from .hl_ws import ws_worker
+from config import APP_TITLE, UI_POLL_SECONDS
+from db import engine, SessionLocal
+from models import Base, Wallet, Position, Fill, AccountSummary
+from repo import list_active_wallets, upsert_wallet, deactivate_wallet
+from hl_ws import ws_worker
 from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
