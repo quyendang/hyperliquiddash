@@ -1,7 +1,7 @@
 import json
 from sqlalchemy import select
 from sqlalchemy.dialects.postgresql import insert as pg_insert
-from .models import Wallet, Position, Fill, AccountSummary
+from models import Wallet, Position, Fill, AccountSummary
 
 async def list_active_wallets(db):
     rows = (await db.execute(select(Wallet).where(Wallet.is_active == True))).scalars().all()
