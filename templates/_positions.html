@@ -1,0 +1,28 @@
+<h2>Positions</h2>
+{% if rows|length == 0 %}
+  <div class="muted">No open positions (hoặc chưa có snapshot).</div>
+{% else %}
+<table>
+  <thead>
+    <tr>
+      <th>Coin</th><th>Side</th><th>Size</th><th>Entry</th><th>Mark</th><th>Liq</th><th>Lev</th><th>uPnL</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for p in rows %}
+    {% if p.size > 0 %}
+    <tr>
+      <td>{{ p.coin }}</td>
+      <td class="{{ 'pos' if p.side=='LONG' else 'neg' }}">{{ p.side }}</td>
+      <td>{{ "%.4f"|format(p.size) }}</td>
+      <td>{{ "%.4f"|format(p.entry_px) }}</td>
+      <td>{{ "%.4f"|format(p.mark_px) }}</td>
+      <td>{{ "%.4f"|format(p.liq_px) }}</td>
+      <td>{{ "%.2f"|format(p.leverage) }}</td>
+      <td class="{{ 'pos' if p.unrealized_pnl >= 0 else 'neg' }}">{{ "%.2f"|format(p.unrealized_pnl) }}</td>
+    </tr>
+    {% endif %}
+  {% endfor %}
+  </tbody>
+</table>
+{% endif %}
